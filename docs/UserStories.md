@@ -1,7 +1,7 @@
 # Histórias de Usuário para o App de Oficina
 
 1. [ ] Substituir o sistema atual de notas adesivas
-2. [ ] Adicionar uma página pública com informações básicas de contato
+2. [x] Adicionar uma página pública com informações básicas de contato
 3. [ ] Adicionar um login de funcionário sem senha ao app
 4. [ ] Mostrar uma página de tickets abertos em tempo real após o login
 5. [ ] Fornecer navegação fácil e busca para clientes e tickets
