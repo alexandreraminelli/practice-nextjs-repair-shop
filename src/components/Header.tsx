@@ -1,6 +1,7 @@
 import { NavButton } from "@/components/NavButton"
-import { FileIcon, HomeIcon, UsersRoundIcon } from "lucide-react"; // ícones
+import { FileIcon, HomeIcon, UsersRoundIcon } from "lucide-react" // ícones
 import Link from "next/link"
+import { ModeToggle } from "@/components/ModeToggle"
 
 /**
  * Cabeçalho do site.
@@ -39,6 +40,9 @@ export default function Header() {
           <NavButton href="/tickets" label="Tickets" Icon={FileIcon} />
           {/* Link: Customers */}
           <NavButton href="/customers" label="Customers" Icon={UsersRoundIcon} />
+
+          {/* Botão de tema */}
+          <ModeToggle />
         </div>
       </div>
     </header>
