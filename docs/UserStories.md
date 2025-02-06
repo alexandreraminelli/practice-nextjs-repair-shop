@@ -18,5 +18,5 @@
 16. [ ] Funcionários só podem editar seus tickets atribuídos
 17. [ ] Gerentes e Administradores podem visualizar, editar e deletar todos os tickets
 18. [ ] O modo desktop é o mais importante, mas o app deve ser utilizável em dispositivos tablet também
-19. [ ] Opção de modo Claro / Escuro solicitada pelos funcionários
+19. [x] Opção de modo Claro / Escuro solicitada pelos funcionários
 20. [ ] Espera-se suporte rápido se algo der errado com o app
