@@ -4,7 +4,7 @@ import { NextRequest } from "next/server"
 /**  */
 export default withAuth(
   async function middleware(request: NextRequest) {
-    //   console.log(request)
+    console.log(request)
   },
   {
     isReturnToCurrentPage: true, // depois de fazer login, redireciona o usuário pra página onde estava antes
