@@ -1,3 +1,10 @@
+import { Metadata } from "next"
+
+/** Metadados da página de tickets. */
+export const metadata: Metadata = {
+  title: "Tickets",
+}
+
 /**
  * Página de tickets.
  */

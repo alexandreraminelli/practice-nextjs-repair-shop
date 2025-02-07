@@ -1,3 +1,10 @@
+import { Metadata } from "next"
+
+/** Metadados da página de consumidores. */
+export const metadata: Metadata = {
+  title: "Customers",
+}
+
 /**
  * Página de clientes.
  */
