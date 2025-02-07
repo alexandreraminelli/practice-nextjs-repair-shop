@@ -1,7 +1,9 @@
 import { NavButton } from "@/components/NavButton"
-import { FileIcon, HomeIcon, UsersRoundIcon } from "lucide-react" // ícones
+import { FileIcon, HomeIcon, UsersRoundIcon, LogOutIcon } from "lucide-react" // ícones
 import Link from "next/link"
 import { ModeToggle } from "@/components/ModeToggle"
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components" // botão de logout
+import { Button } from "./ui/button"
 
 /**
  * Cabeçalho do site.
@@ -43,6 +45,21 @@ export default function Header() {
 
           {/* Botão de tema */}
           <ModeToggle />
+
+          {/* Botão de logout */}
+          <Button
+            aria-label="LogOut"
+            title="LogOut"
+            asChild
+            // style:
+            variant="ghost"
+            size="icon"
+            className="rounded-full"
+          >
+            <LogoutLink>
+              <LogOutIcon />
+            </LogoutLink>
+          </Button>
         </div>
       </div>
     </header>
