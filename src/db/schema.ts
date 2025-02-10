@@ -29,3 +29,28 @@ export const customers = pgTable(
       .$onUpdate(() => new Date()), // valor atualizado automaticamente ao editar a tupla
   }
 )
+
+/** Tabela de tickets. */
+export const tickets = pgTable(
+  "tickets", // nome da tabela
+  // colunas (nomes e data types)
+  {
+    id: serial("id").primaryKey(), // chave primária
+    // FKs:
+    customerId: integer("customer_id")
+      .notNull()
+      .references(() => customers.id), // refere a coluna `id` da tabela `customers`
+    // content:
+    title: varchar("title").notNull(),
+    description: text("description"),
+    completed: boolean("completed").notNull().default(false),
+    // técnico que resolve o pedido:
+    tech: varchar("tech").notNull().default("unassigned"),
+    // historical:
+    createAt: timestamp("create_at").notNull().defaultNow(), // data e hora de criação do cliente (padrão: agora)
+    updateAt: timestamp("update_at") // data e hora de atualização do cliente
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()), // valor atualizado automaticamente ao editar a tupla
+  }
+)
