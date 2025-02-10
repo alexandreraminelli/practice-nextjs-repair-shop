@@ -8,10 +8,10 @@
 6. [x] Fornecer uma opção de logout
 7. [x] Exigir que os usuários façam login pelo menos uma vez por semana
 8. [x] Fornecer uma maneira de remover o acesso de funcionários imediatamente, se necessário
-9. [ ] Clientes têm um ID, endereço completo, telefone, email e notas
-10. [ ] Tickets têm um ID, título, notas, datas de criação e atualização
-11. [ ] Tickets estão ABERTOS ou COMPLETOS
-12. [ ] Tickets são atribuídos a funcionários específicos
+9. [x] Clientes têm um ID, endereço completo, telefone, email e notas
+10. [x] Tickets têm um ID, título, notas, datas de criação e atualização
+11. [x] Tickets estão ABERTOS ou COMPLETOS
+12. [x] Tickets são atribuídos a funcionários específicos
 13. [x] Usuários podem ter permissões de Funcionário, Gerente ou Administrador
 14. [ ] Todos os usuários podem criar e visualizar tickets
 15. [ ] Todos os usuários podem criar, editar e visualizar clientes
