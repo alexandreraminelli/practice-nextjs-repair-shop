@@ -22,8 +22,8 @@ export const customers = pgTable(
     // info
     notes: text("notes"), // anotações
     active: boolean("active").notNull().default(true), // clientes antigos não são deletados, mas marcados com `active: false`
-    createAt: timestamp("create_at").notNull().defaultNow(), // data e hora de criação do cliente (padrão: agora)
-    updateAt: timestamp("update_at") // data e hora de atualização do cliente
+    createAt: timestamp("created_at").notNull().defaultNow(), // data e hora de criação do cliente (padrão: agora)
+    updateAt: timestamp("updated_at") // data e hora de atualização do cliente
       .notNull()
       .defaultNow()
       .$onUpdate(() => new Date()), // valor atualizado automaticamente ao editar a tupla
@@ -47,8 +47,8 @@ export const tickets = pgTable(
     // técnico que resolve o pedido:
     tech: varchar("tech").notNull().default("unassigned"),
     // historical:
-    createAt: timestamp("create_at").notNull().defaultNow(), // data e hora de criação do cliente (padrão: agora)
-    updateAt: timestamp("update_at") // data e hora de atualização do cliente
+    createAt: timestamp("created_at").notNull().defaultNow(), // data e hora de criação do cliente (padrão: agora)
+    updateAt: timestamp("updated_at") // data e hora de atualização do cliente
       .notNull()
       .defaultNow()
       .$onUpdate(() => new Date()), // valor atualizado automaticamente ao editar a tupla
