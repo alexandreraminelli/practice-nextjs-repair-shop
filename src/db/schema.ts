@@ -1,4 +1,4 @@
-import { PgTable, serial, varchar, boolean, timestamp, integer, text, pgTable } from "drizzle-orm/pg-core" // data types para banco de dados
+import { pgTable, serial, varchar, boolean, timestamp, integer, text } from "drizzle-orm/pg-core" // data types para banco de dados
 import { relations } from "drizzle-orm" // relações entre tabelas
 
 /** Tabela de clientes. */
@@ -54,3 +54,21 @@ export const tickets = pgTable(
       .$onUpdate(() => new Date()), // valor atualizado automaticamente ao editar a tupla
   }
 )
+
+// Relações entre tabelas
+/** Relações da tabela `customers`. */
+export const customersRelations = relations(
+  customers, // tabela
+  ({ many }) => ({
+    /** Um cliente tem muitos tickets. */
+    tickets: many(tickets),
+  })
+)
+/** Relações da tabela `tickets`. */
+export const ticketsRelations = relations(tickets, ({ one }) => ({
+  /** Um ticket pertence a um cliente. */
+  customer: one(customers, {
+    fields: [tickets.customerId], // campo `customerId` na tabela `tickets`
+    references: [customers.id], // campo `id` na tabela `customers`
+  }),
+}))
