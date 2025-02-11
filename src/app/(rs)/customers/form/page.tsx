@@ -1,3 +1,4 @@
+import BackButton from "@/components/BackButton"
 import { getCustomer } from "@/lib/queries/getCustomer"
 
 /** Formulário para cadastro e edição de clientes. */
@@ -19,9 +20,16 @@ export default async function CustomerFormPage(
           <>
             {/* Mensagem de erro */}
             <h2 className="text-2xl mb-2">Customer ID #{customerId} not found</h2>
+            {/* Botão de voltar */}
+            <BackButton variant="default" />
           </>
         )
       }
+      // Se cliente for válido
+      // componente de formulário de edição
+    } else {
+      /* Não houver houver parâmetros na URL */
+      // componente de formulário de cadastro
     }
   } catch (e) {
     if (e instanceof Error) {
