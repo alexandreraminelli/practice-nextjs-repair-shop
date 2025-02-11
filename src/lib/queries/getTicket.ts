@@ -3,7 +3,7 @@ import { tickets } from "@/db/schema"
 import { eq } from "drizzle-orm"
 
 /** Retorna um ticket do db se seu id corresponder ao id informado. */
-export async function getTickets(
+export async function getTicket(
   /** ID do ticket a ser buscado. */
   id: number
 ) {

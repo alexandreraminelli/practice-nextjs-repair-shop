@@ -3,7 +3,7 @@ import { customers } from "@/db/schema"
 import { eq } from "drizzle-orm"
 
 /** Retorna um cliente do db se seu id corresponder ao id informado. */
-export async function getCustomers(
+export async function getCustomer(
   /** ID do cliente a ser buscado. */
   id: number
 ) {
