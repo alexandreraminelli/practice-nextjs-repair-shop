@@ -6,6 +6,7 @@ export const customers = pgTable(
   "customers", // nome da tabela
   // colunas (nomes e data types)
   {
+    // nome do atributo no JS: dataType("nome do db", [comprimento]).(outros atributos da coluna, como NOT NULL, PRIMARY KEY, etc)
     id: serial("id").primaryKey(), // chave primária
     // nome:
     firstName: varchar("first_name").notNull(),
