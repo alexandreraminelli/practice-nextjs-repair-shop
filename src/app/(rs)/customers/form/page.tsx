@@ -26,6 +26,7 @@ export default async function CustomerFormPage(
         )
       }
       // Se cliente for válido
+      console.log(customer)
       // componente de formulário de edição
     } else {
       /* Não houver houver parâmetros na URL */
