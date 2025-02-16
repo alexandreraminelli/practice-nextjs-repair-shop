@@ -29,4 +29,11 @@ export default function CustomerForm(
     email: customer?.email || "",
     notes: customer?.notes || "",
   }
+
+  /** Formulário de clientes. */
+  const form = useForm<insertCustomerSchemaType>({
+    mode: "onBlur", // modo de validação: validar ao perder o foco do input
+    resolver: zodResolver(insertCustomerSchema), // resolutor de validação: zod
+    defaultValues, // valores padrão
+  })
 }
