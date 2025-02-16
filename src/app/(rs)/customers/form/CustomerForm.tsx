@@ -36,4 +36,9 @@ export default function CustomerForm(
     resolver: zodResolver(insertCustomerSchema), // resolutor de validação: zod
     defaultValues, // valores padrão
   })
+
+  /** Enviar o formulário. */
+  async function submitForm(data: insertCustomerSchemaType) {
+    console.log(data) // visualização no terminal
+  }
 }
