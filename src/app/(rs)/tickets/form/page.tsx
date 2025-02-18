@@ -1,6 +1,8 @@
 import { getCustomer } from "@/lib/queries/getCustomer"
 import { getTicket } from "@/lib/queries/getTicket"
 import BackButton from "@/components/BackButton"
+import TicketForm from "./TicketForm"
+import { Ticket } from "lucide-react"
 
 /** Formulário para cadastro e edição de tickets. */
 export default async function TicketFormPage(
@@ -22,12 +24,12 @@ export default async function TicketFormPage(
       )
     }
 
-    // New ticket form
+    /* Se houver cliente mas não ticket: exiba create form */
     if (customerId) {
       /** ID do cliente. */
       const customer = await getCustomer(parseInt(customerId))
 
-      // Se não houver cliente
+      /* Se não houver cliente */
       if (!customer) {
         return (
           <>
@@ -39,6 +41,7 @@ export default async function TicketFormPage(
         )
       }
 
+      /* cliente não está ativo */
       if (!customer.active) {
         return (
           <>
@@ -48,34 +51,36 @@ export default async function TicketFormPage(
             <BackButton variant="default" />
           </>
         )
-
-        // return ticket form
-        console.log(customer)
       }
-      // Edit ticket form
-      if (ticketId) {
-        /** ID do ticket. */
-        const ticket = await getTicket(parseInt(ticketId))
+      // return ticket form
+      console.log(customer)
+      return <TicketForm customer={customer} />
+    }
 
-        // Se não houver ticket
-        if (!ticket) {
-          return (
-            <>
-              {/* Mensagem de erro */}
-              <h2 className="text-2xl mb-2">Ticket ID #{ticketId} not found</h2>
-              {/* Botão de voltar */}
-              <BackButton variant="default" />
-            </>
-          )
-        }
+    /* Se tiver ticket: exiba edit form */
+    if (ticketId) {
+      /** ID do ticket. */
+      const ticket = await getTicket(parseInt(ticketId))
 
-        /** Cliente do ticket. */
-        const customer = await getCustomer(ticket.customerId)
-
-        // return ticket form
-        console.log("ticket: ", ticket)
-        console.log("customer: ", customer)
+      // Se não houver ticket
+      if (!ticket) {
+        return (
+          <>
+            {/* Mensagem de erro */}
+            <h2 className="text-2xl mb-2">Ticket ID #{ticketId} not found</h2>
+            {/* Botão de voltar */}
+            <BackButton variant="default" />
+          </>
+        )
       }
+
+      /** Cliente do ticket. */
+      const customer = await getCustomer(ticket.customerId)
+
+      // return ticket form
+      console.log("ticket: ", ticket)
+      console.log("customer: ", customer)
+      return <TicketForm customer={customer} ticket={ticket} />
     }
   } catch (e) {
     if (e instanceof Error) {
