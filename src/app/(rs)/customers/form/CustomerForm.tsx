@@ -41,4 +41,28 @@ export default function CustomerForm(
   async function submitForm(data: insertCustomerSchemaType) {
     console.log(data) // visualização no terminal
   }
+
+  // Componente
+  return (
+    <div className="flex flex-col gap-1 sm:px-8">
+      {/* Cabeçalho do formulário */}
+      <header>
+        {/* Título do formulário */}
+        <h2 className="text-2xl font-bold">{customer?.id ? "Edit" : "New"} Customer Form</h2>
+      </header>
+
+      {/* Formulário */}
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(submitForm)}
+          // styles:
+          className="flex flex-col sm:flex-row 
+          gap-4 sm:gap-8"
+        >
+          {/* Dados do formulário */}
+          <p>{JSON.stringify(form.getValues())}</p>
+        </form>
+      </Form>
+    </div>
+  )
 }

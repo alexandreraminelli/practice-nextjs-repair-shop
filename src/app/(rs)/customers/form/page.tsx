@@ -1,5 +1,6 @@
 import BackButton from "@/components/BackButton"
 import { getCustomer } from "@/lib/queries/getCustomer"
+import CustomerForm from "./CustomerForm"
 
 /** Formulário para cadastro e edição de clientes. */
 export default async function CustomerFormPage(
@@ -25,12 +26,13 @@ export default async function CustomerFormPage(
           </>
         )
       }
-      // Se cliente for válido
+      /* Se cliente for válido */
       console.log(customer)
-      // componente de formulário de edição
+      return <CustomerForm customer={customer} /> // formulário de edição
     } else {
       /* Não houver houver parâmetros na URL */
-      // componente de formulário de cadastro
+
+      return <CustomerForm /> // formulário de cadastro
     }
   } catch (e) {
     if (e instanceof Error) {
