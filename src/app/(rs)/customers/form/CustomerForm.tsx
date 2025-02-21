@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
 import { insertCustomerSchema, type insertCustomerSchemaType, type selectCustomerSchemaType } from "@/zod-schemas/customer"
+import { InputWithLabel } from "@/components/ui/inputs/InputWithLabel"
 
 /** Props do formulário de clientes. */
 type Props = {
@@ -56,11 +57,33 @@ export default function CustomerForm(
         <form
           onSubmit={form.handleSubmit(submitForm)}
           // styles:
-          className="flex flex-col sm:flex-row 
-          gap-4 sm:gap-8"
+          className="flex flex-col md:flex-row 
+          gap-4 md:gap-8"
         >
+          {/* Coluna esquerda */}
+          <div className="flex flex-col gap-4 w-full max-w-xs">
+            {/* Inputs do formulário */}
+            {/* Primeiro nome */}
+            <InputWithLabel<insertCustomerSchemaType>
+              fieldTitle="First Name" // título do campo
+              nameInSchema="firstName" // nome do campo no schema
+            />
+            {/* Sobrenome */}
+            <InputWithLabel<insertCustomerSchemaType> fieldTitle="Last Name" nameInSchema="lastName" />
+
+            {/* Endereço 1 */}
+            <InputWithLabel<insertCustomerSchemaType> fieldTitle="Address 1" nameInSchema="address1" />
+            {/* Endereço 2 */}
+            <InputWithLabel<insertCustomerSchemaType> fieldTitle="Address 2" nameInSchema="address2" />
+            {/* Cidade */}
+            <InputWithLabel<insertCustomerSchemaType> fieldTitle="City" nameInSchema="city" />
+          </div>
+
+          {/* Coluna direita */}
+          <div className="flex flex-col gap-4 w-full max-w-xs"></div>
+
           {/* Dados do formulário */}
-          <p>{JSON.stringify(form.getValues())}</p>
+          {/* <p>{JSON.stringify(form.getValues())}</p> */}
         </form>
       </Form>
     </div>
