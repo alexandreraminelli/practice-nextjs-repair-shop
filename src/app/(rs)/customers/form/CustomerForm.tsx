@@ -60,9 +60,10 @@ export default function CustomerForm(
           className="flex flex-col md:flex-row 
           gap-4 md:gap-8"
         >
+          {/* Inputs do formulário divididos em 2 colunas */}
+
           {/* Coluna esquerda */}
           <div className="flex flex-col gap-4 w-full max-w-xs">
-            {/* Inputs do formulário */}
             {/* Primeiro nome */}
             <InputWithLabel<insertCustomerSchemaType>
               fieldTitle="First Name" // título do campo
@@ -80,7 +81,44 @@ export default function CustomerForm(
           </div>
 
           {/* Coluna direita */}
-          <div className="flex flex-col gap-4 w-full max-w-xs"></div>
+          <div className="flex flex-col gap-4 w-full max-w-xs">
+            {/* Zip Code */}
+            <InputWithLabel<insertCustomerSchemaType> fieldTitle="Zip Code" nameInSchema="zip" />
+
+            {/* E-mail */}
+            <InputWithLabel<insertCustomerSchemaType> fieldTitle="Email" nameInSchema="email" />
+            {/* Telefone */}
+            <InputWithLabel<insertCustomerSchemaType> fieldTitle="Phone" nameInSchema="phone" />
+
+            <div className="flex gap-2">
+              {/* Botão submit */}
+              <Button
+                type="submit" // tipo de botão: submeter formulário
+                // styles:
+                className="w-3/4"
+                variant="default"
+                // accessibility:
+                title="Save"
+              >
+                {/* Texto do botão */}
+                Save
+              </Button>
+
+              {/* Botão de reset */}
+              <Button
+                type="button"
+                // action: resetar formulário
+                onClick={() => form.reset(defaultValues)}
+                // styles:
+                variant="destructive"
+                // accessibility:
+                title="Reset"
+              >
+                {/* Texto do botão */}
+                Reset
+              </Button>
+            </div>
+          </div>
 
           {/* Dados do formulário */}
           {/* <p>{JSON.stringify(form.getValues())}</p> */}
