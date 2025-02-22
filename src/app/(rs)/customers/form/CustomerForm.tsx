@@ -1,11 +1,12 @@
 "use client"
 
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
-import { insertCustomerSchema, type insertCustomerSchemaType, type selectCustomerSchemaType } from "@/zod-schemas/customer"
+import { Form } from "@/components/ui/form"
 import { InputWithLabel } from "@/components/ui/inputs/InputWithLabel"
+import { TextAreaWithLabel } from "@/components/ui/inputs/TextAreaWithLabel"
+import { insertCustomerSchema, type insertCustomerSchemaType, type selectCustomerSchemaType } from "@/zod-schemas/customer"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 
 /** Props do formulário de clientes. */
 type Props = {
@@ -89,6 +90,9 @@ export default function CustomerForm(
             <InputWithLabel<insertCustomerSchemaType> fieldTitle="Email" nameInSchema="email" />
             {/* Telefone */}
             <InputWithLabel<insertCustomerSchemaType> fieldTitle="Phone" nameInSchema="phone" />
+
+            {/* Notas e observações */}
+            <TextAreaWithLabel<insertCustomerSchemaType> fieldTitle="Notes" nameInSchema="notes" className="h-40" />
 
             <div className="flex gap-2">
               {/* Botão submit */}
