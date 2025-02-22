@@ -7,6 +7,8 @@ import { TextAreaWithLabel } from "@/components/ui/inputs/TextAreaWithLabel"
 import { insertCustomerSchema, type insertCustomerSchemaType, type selectCustomerSchemaType } from "@/zod-schemas/customer"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { SelectWithLabel } from "@/components/ui/inputs/SelectWithLabel"
+import { StatesArray } from "@/constants/StatesArray"
 
 /** Props do formulário de clientes. */
 type Props = {
@@ -79,6 +81,8 @@ export default function CustomerForm(
             <InputWithLabel<insertCustomerSchemaType> fieldTitle="Address 2" nameInSchema="address2" />
             {/* Cidade */}
             <InputWithLabel<insertCustomerSchemaType> fieldTitle="City" nameInSchema="city" />
+            {/* Estado */}
+            <SelectWithLabel<insertCustomerSchemaType> fieldTitle="State" nameInSchema="state" data={StatesArray} />
           </div>
 
           {/* Coluna direita */}
