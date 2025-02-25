@@ -1,10 +1,8 @@
 "use client"
 
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { InputHTMLAttributes } from "react"
-import { useFormContext } from "react-hook-form"
 import { Checkbox } from "@/components/ui/checkbox"
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { useFormContext } from "react-hook-form"
 
 /** Props de `CheckboxWithLabel`. */
 type Props<S> = {
