@@ -1,8 +1,8 @@
 "use client"
 
-import { useFormContext } from "react-hook-form"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useFormContext } from "react-hook-form"
 
 /** Opções de dados exibidos no select.  */
 type DataObj = {
