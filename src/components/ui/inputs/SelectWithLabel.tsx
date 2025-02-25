@@ -25,10 +25,10 @@ type Props<S> = {
 }
 
 /**
- *
+ * Componente de select com label.
  */
 export function SelectWithLabel<S>(
-  { fieldTitle, nameInSchema, data, className, ...props }: Props<S> // props
+  { fieldTitle, nameInSchema, data, className }: Props<S> // props
 ) {
   /** Referenciar formulário dentro do componente. */
   const form = useFormContext()
