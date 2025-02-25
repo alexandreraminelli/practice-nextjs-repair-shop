@@ -72,7 +72,7 @@ export default function TicketForm(
               nameInSchema="title" // nome do campo no schema
             />
             {/* Técnico responsável */}
-            <InputWithLabel<insertTicketSchemaType> fieldTitle="Tech" nameInSchema="tech" readOnly={true} />
+            <InputWithLabel<insertTicketSchemaType> fieldTitle="Tech" nameInSchema="tech" disabled={true} />
 
             {/* Informações do cliente do ticket */}
             <div className="mt-4 space-y-2">
