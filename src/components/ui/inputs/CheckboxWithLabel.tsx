@@ -49,6 +49,7 @@ export function CheckboxWithLabel<S>(
               <Checkbox
                 id={nameInSchema}
                 {...field} // referência ao campo
+                checked={field.value} // valor do campo
                 onCheckedChange={field.onChange}
               ></Checkbox>
             </FormControl>
