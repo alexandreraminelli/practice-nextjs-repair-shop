@@ -6,6 +6,7 @@ import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
 import { insertCustomerSchema, type insertCustomerSchemaType, type selectCustomerSchemaType } from "@/zod-schemas/customer"
 import { insertTicketSchema, type insertTicketSchemaType, type selectTicketSchemaType } from "@/zod-schemas/ticket"
+import { CheckboxWithLabel } from "@/components/ui/inputs/CheckboxWithLabel"
 import { InputWithLabel } from "@/components/ui/inputs/InputWithLabel"
 import { TextAreaWithLabel } from "@/components/ui/inputs/TextAreaWithLabel"
 import { SelectWithLabel } from "@/components/ui/inputs/SelectWithLabel"
@@ -73,6 +74,9 @@ export default function TicketForm(
             />
             {/* Técnico responsável */}
             <InputWithLabel<insertTicketSchemaType> fieldTitle="Tech" nameInSchema="tech" disabled={true} />
+
+            {/* Checkbox de completado */}
+            <CheckboxWithLabel<insertTicketSchemaType> fieldTitle="Completed" nameInSchema="completed" message="Yes" />
 
             {/* Informações do cliente do ticket */}
             <div className="mt-4 space-y-2">
