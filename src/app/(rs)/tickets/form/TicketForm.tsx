@@ -6,6 +6,9 @@ import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
 import { insertCustomerSchema, type insertCustomerSchemaType, type selectCustomerSchemaType } from "@/zod-schemas/customer"
 import { insertTicketSchema, type insertTicketSchemaType, type selectTicketSchemaType } from "@/zod-schemas/ticket"
+import { InputWithLabel } from "@/components/ui/inputs/InputWithLabel"
+import { TextAreaWithLabel } from "@/components/ui/inputs/TextAreaWithLabel"
+import { SelectWithLabel } from "@/components/ui/inputs/SelectWithLabel"
 
 /** Props do formulário. */
 type Props = {
@@ -58,11 +61,73 @@ export default function TicketForm(
         <form
           onSubmit={form.handleSubmit(submitForm)}
           // styles:
-          className="flex flex-col sm:flex-row 
-          gap-4 sm:gap-8"
+          className="flex flex-col md:flex-row 
+          gap-4 md:gap-8"
         >
-          {/* Dados do formulário */}
-          <p>{JSON.stringify(form.getValues())}</p>
+          {/* Coluna esquerda */}
+          <div className="flex flex-col gap-4 w-full max-w-xs">
+            {/* Título */}
+            <InputWithLabel<insertTicketSchemaType>
+              fieldTitle="Title" // título do campo
+              nameInSchema="title" // nome do campo no schema
+            />
+            {/* Técnico responsável */}
+            <InputWithLabel<insertTicketSchemaType> fieldTitle="Tech" nameInSchema="tech" readOnly={true} />
+
+            {/* Informações do cliente do ticket */}
+            <div className="mt-4 space-y-2">
+              <h3 className="text-lg">Customer Info</h3>
+              <hr className="w-4/5" />
+              <p>
+                {customer.firstName} {customer.lastName}
+              </p>
+              {/* Endereço do cliente */}
+              <p>{customer.address1}</p>
+              {customer.address2 && <p>{customer.address2}</p>}
+              <p>
+                {customer.city}, {customer.state}
+              </p>
+              {/* Contato do cliente */}
+              <hr className="w-4/5" />
+              <p>{customer.email}</p>
+              <p>{customer.phone}</p>
+            </div>
+          </div>
+
+          {/* Coluna direita */}
+          <div className="flex flex-col gap-4 w-full max-w-xs">
+            {/* Descrição do pedido */}
+            <TextAreaWithLabel<insertTicketSchemaType> fieldTitle="Description" nameInSchema="description" className="h-64" />
+          </div>
+
+          <div className="flex gap-2">
+            {/* Botão submit */}
+            <Button
+              type="submit" // tipo de botão: submeter formulário
+              // styles:
+              className="w-3/4"
+              variant="default"
+              // accessibility:
+              title="Save"
+            >
+              {/* Texto do botão */}
+              Save
+            </Button>
+
+            {/* Botão de reset */}
+            <Button
+              type="button"
+              // action: resetar formulário
+              onClick={() => form.reset(defaultValues)}
+              // styles:
+              variant="destructive"
+              // accessibility:
+              title="Reset"
+            >
+              {/* Texto do botão */}
+              Reset
+            </Button>
+          </div>
         </form>
       </Form>
     </div>
