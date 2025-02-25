@@ -18,6 +18,7 @@ export default function BackButton(
       // style:
       variant={variant}
       className={className}
+      {...props}
     >
       {title}
     </Button>
