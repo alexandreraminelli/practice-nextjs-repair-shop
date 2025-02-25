@@ -1,8 +1,7 @@
+import BackButton from "@/components/BackButton"
 import { getCustomer } from "@/lib/queries/getCustomer"
 import { getTicket } from "@/lib/queries/getTicket"
-import BackButton from "@/components/BackButton"
 import TicketForm from "./TicketForm"
-import { Ticket } from "lucide-react"
 
 /** Formulário para cadastro e edição de tickets. */
 export default async function TicketFormPage(
