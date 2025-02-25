@@ -102,35 +102,35 @@ export default function TicketForm(
           <div className="flex flex-col gap-4 w-full max-w-xs">
             {/* Descrição do pedido */}
             <TextAreaWithLabel<insertTicketSchemaType> fieldTitle="Description" nameInSchema="description" className="h-64" />
-          </div>
 
-          <div className="flex gap-2">
-            {/* Botão submit */}
-            <Button
-              type="submit" // tipo de botão: submeter formulário
-              // styles:
-              className="w-3/4"
-              variant="default"
-              // accessibility:
-              title="Save"
-            >
-              {/* Texto do botão */}
-              Save
-            </Button>
+            <div className="flex gap-2">
+              {/* Botão submit */}
+              <Button
+                type="submit" // tipo de botão: submeter formulário
+                // styles:
+                className="w-3/4"
+                variant="default"
+                // accessibility:
+                title="Save"
+              >
+                {/* Texto do botão */}
+                Save
+              </Button>
 
-            {/* Botão de reset */}
-            <Button
-              type="button"
-              // action: resetar formulário
-              onClick={() => form.reset(defaultValues)}
-              // styles:
-              variant="destructive"
-              // accessibility:
-              title="Reset"
-            >
-              {/* Texto do botão */}
-              Reset
-            </Button>
+              {/* Botão de reset */}
+              <Button
+                type="button"
+                // action: resetar formulário
+                onClick={() => form.reset(defaultValues)}
+                // styles:
+                variant="destructive"
+                // accessibility:
+                title="Reset"
+              >
+                {/* Texto do botão */}
+                Reset
+              </Button>
+            </div>
           </div>
         </form>
       </Form>
