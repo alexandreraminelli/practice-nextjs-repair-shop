@@ -3,12 +3,13 @@
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { InputWithLabel } from "@/components/ui/inputs/InputWithLabel"
+import { SelectWithLabel } from "@/components/ui/inputs/SelectWithLabel"
 import { TextAreaWithLabel } from "@/components/ui/inputs/TextAreaWithLabel"
+import { StatesArray } from "@/constants/StatesArray"
 import { insertCustomerSchema, type insertCustomerSchemaType, type selectCustomerSchemaType } from "@/zod-schemas/customer"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs" // importar o hook de autenticação do Kinde
 import { useForm } from "react-hook-form"
-import { SelectWithLabel } from "@/components/ui/inputs/SelectWithLabel"
-import { StatesArray } from "@/constants/StatesArray"
 
 /** Props do formulário de clientes. */
 type Props = {
@@ -19,6 +20,10 @@ type Props = {
 export default function CustomerForm(
   { customer }: Props // props
 ) {
+  // Hook de autenticação do Kinde
+  const { getPermission, isLoading } = useKindeBrowserClient()
+  const isManager = !isLoading && getPermission("manager")?.isGranted // permissão de gerente
+
   /** Valores padrão do formulário. */
   const defaultValues: insertCustomerSchemaType = {
     id: customer?.id ?? 0,
@@ -52,7 +57,9 @@ export default function CustomerForm(
       {/* Cabeçalho do formulário */}
       <header>
         {/* Título do formulário */}
-        <h2 className="text-2xl font-bold">{customer?.id ? "Edit" : "New"} Customer Form</h2>
+        <h2 className="text-2xl font-bold">
+          {customer?.id ? "Edit" : "New"} Customer {customer?.id ? `#${customer.id}` : "Form"}
+        </h2>
       </header>
 
       {/* Formulário */}
