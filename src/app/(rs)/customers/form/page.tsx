@@ -2,6 +2,19 @@ import BackButton from "@/components/BackButton"
 import { getCustomer } from "@/lib/queries/getCustomer"
 import CustomerForm from "./CustomerForm"
 
+/** Metadados da página. */
+export async function generateMetadata(
+  { searchParams }: CustomerFormPageProps // string
+) {
+  // desestruturação dos dados da tabela
+  const { customerId } = await searchParams
+
+  // Se abrir formulário de cadastro de cliente
+  if (!customerId) return { title: "New Customer" }
+  // Se abrir formulário de edição de cliente
+  return { title: `Edit Customer #${customerId}` }
+}
+
 /** Formulário para cadastro e edição de clientes. */
 export default async function CustomerFormPage(
   { searchParams }: CustomerFormPageProps // string
