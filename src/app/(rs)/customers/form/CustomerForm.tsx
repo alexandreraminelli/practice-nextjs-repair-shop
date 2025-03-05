@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { CheckboxWithLabel } from "@/components/ui/inputs/CheckboxWithLabel"
 import { Form } from "@/components/ui/form"
 import { InputWithLabel } from "@/components/ui/inputs/InputWithLabel"
 import { SelectWithLabel } from "@/components/ui/inputs/SelectWithLabel"
@@ -37,6 +38,7 @@ export default function CustomerForm(
     phone: customer?.phone ?? "",
     email: customer?.email ?? "",
     notes: customer?.notes ?? "",
+    active: customer?.active ?? true,
   }
 
   /** Formulário de clientes. */
@@ -104,6 +106,13 @@ export default function CustomerForm(
 
             {/* Notas e observações */}
             <TextAreaWithLabel<insertCustomerSchemaType> fieldTitle="Notes" nameInSchema="notes" className="h-40" />
+
+            {/* Se cliente está ativo */}
+            {isLoading ? ( // se estiver carregando a permissão
+              <p>Loading...</p> // exibir msg de carregamento
+            ) : (
+              isManager /* se for gerente: exibe o checkbox */ && <CheckboxWithLabel<insertCustomerSchemaType> fieldTitle="Active" nameInSchema="active" message="Yes" />
+            )}
 
             <div className="flex gap-2">
               {/* Botão submit */}
