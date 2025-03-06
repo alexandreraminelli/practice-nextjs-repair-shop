@@ -12,8 +12,12 @@ import { useForm } from "react-hook-form"
 
 /** Props do formulário. */
 type Props = {
+  /** Cliente do ticket. */
   customer: selectCustomerSchemaType
+  /** O ticket a ser editado. */
   ticket?: selectTicketSchemaType
+  /** Técnico responsável pelo ticket. */
+  techs?: { id: string; description: string }[]
 }
 
 /** Formulário de tickets. */

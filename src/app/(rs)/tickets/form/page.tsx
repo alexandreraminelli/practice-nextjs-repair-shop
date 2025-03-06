@@ -62,9 +62,27 @@ export default async function TicketFormPage(
           </>
         )
       }
-      // return ticket form
-      console.log(customer)
-      return <TicketForm customer={customer} />
+
+      /* se cliente estiver ativo */
+      if (isManager) {
+        /* Se for gerente */
+        kindeInit() // inicializar API do Kinde Management
+        const { users } = await Users.getUsers() // obter usuários
+
+        /**
+         * Técnicos exibidos em um menu dropdown de seleção.
+         * Verifica se há usuários:
+         * - Se houver usuários: mapeia usuários adicionando o `id` e `description` com o email para o menu dropdown.
+         * - Se não houver usuários: valor é um array vazio.
+         */
+        const techs = users ? users.map((user) => ({ id: user.email!, description: user.email! })) : []
+
+        // return ticket form com o menu dropdown de técnicos
+        return <TicketForm customer={customer} techs={techs} />
+      } else {
+        /* Se não for gerente */
+        return <TicketForm customer={customer} />
+      }
     }
 
     /* Se tiver ticket: exiba edit form */
